@@ -1,0 +1,613 @@
+*, ::before, ::after { /* --- ici, je commence par un reset du css c'est à dire: ça sert à faire table rase, un environnement cline 
+    pour mettre mes propres valeurs également le before et after et je leur enlève le padding et le margin ---*/
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;/*-- Pour que le scroll soit plus doux --*/
+}
+
+body {
+    font-family: Roboto, Helvetica, sans-serif;
+    background: #f1f1f1;
+}
+
+/* --------------- Navigation --------------- */
+nav {
+    position: fixed;  /*--la navbar ne bouge pas--*/
+    z-index: 1000;
+    width: 100%;
+    height: 70px;
+    background: transparent;
+    transition: background-color 0.3s ease-in-out,
+                border-bottom 0.3s ease-in-out;/*---sert à mettre plusiers transition sur plusieurs propriétés différentes----*/
+
+}
+nav.anim-nav {
+    background: #000;
+    border-bottom: 1px solid #f1f1f1;
+    /*color: #f1f1f1;*/
+}
+nav ul {
+    width: 100%; 
+    height: 100%;
+    list-style-type: none;/* on enlève les petits ronds qui sont sur la liste */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav li {
+    margin: 0 15px;
+}
+nav a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 550px) {  /* A partir de 550px */
+    nav li {
+        margin: 0 8px;
+    }
+    nav a {
+        font-size: 15px;
+    }
+    
+}
+
+/*------------ Accueil Fondu ----------*/
+
+.accueil {
+    height: 800px; /* Hauteur définit la page d'acceuil qui ne rétréciera pas si on scroll de haut en bas */
+    display: flex; /* ça veut dire que nos deux bloc gauche et droite vont se mettre les uns à la suite des autres */
+    overflow: hidden; /* overflow ça veut dire ce qui dépasse et hidden: ça veut dire caché */
+}
+
+.bloc-gauche-accueil {
+    position: relative;
+    width: 40%;
+    height: 100%;
+    background: #000;
+    box-shadow: 90px 0 100px 100px #000; /* 90px de x c'est à dire de gauche à droite, 0 de y de haut en bas, 100px de flou et 100px de spread qui veut dire étendu et la couleur*/
+}
+h1 {
+    color: #f1f1f1;
+    font-family: Montserrat, Helvetica, sans-serif;
+    font-size: 90px;
+    padding-top: 200px; /* on met du remplissage*/ 
+    padding-bottom: 20px;
+    margin-left: 8vw; /* : on lui met un viewport width de 8% de la largeur de l'écran. Cette unité de longueur est utilisée pour les tailles de blocs width et height */
+    white-space: nowrap; /* on veut qu'il reste droit tout le temps. il ne va pas wrapper */
+}
+
+.accueil p {
+    
+    color: #f1f1f1;
+    font-size: 30px;
+    text-align: justify; /* ser à justifier les texte que l'on utilise sur un bloc de texte */ 
+    width: 600px;
+    margin-left: 8vw; /* pour que ce soit aligner à notre hauteur de champ . Il faut tjrs penser symétrie */ 
+    line-height: 1.3;
+}
+
+.cont-btn-home {
+    display: flex; /* les deux boutons les uns à la suite des autres */
+}
+.btn-accueil {
+    font-size: 18px;
+    text-align: center;
+    color:  #f1f1f1;
+    padding: 15px; /* pour le remplissage à l'intérieur */
+    text-decoration: none; /* parce que c'est un lien */
+    border-radius: 5px;
+    outline: none; /* les boutons ont des outline mais pas les liens */ 
+    border: none;
+    margin-top: 40px;
+    border: 1px solid #f1f1f1;
+    width: 150px; /* pour qu'ils aient la même taille */ 
+    cursor: pointer;
+  
+}
+.btn-accueil:hover {
+    transition: all 0.2s ease-in-out; /* animation des boutons: all 0.2s=> ça prends toutes les propriétés et ça va durer 0.2seconde et ease-in-out pour lent au début et à la fin et vitesse normale au millieu=> les vitesse sont plus douces */
+    color: #000;
+    background: #f1f1f1;
+}
+.b1 {
+    margin-left: 8vw; /* on le décale de la gauche du container */
+}
+.b2 {
+    margin-left: 10px; /* ici, je le décale de la gauche de 10px du premier bouton */
+}
+
+.bloc-droit-accueil {
+    background-image: url(ressources/gym-accueil.jpg);
+    width: 60%;
+    height: 100%;
+    background-position: 70% 10%; /* on bouge dans l'image de 70% sur x et 10% sur y */
+}
+
+
+/* Medias accueil fondu */
+
+@media screen and (max-width: 1350px) { /* A partir de 1350px  c'est un breakpoint */
+    .bloc-gauche-accueil {
+        width: 60%;
+    }
+    .bloc-droit-accueil {
+        background-position: 72% 10%; /* on bouge l'image de droite et ça ma rajoute un peu plus de largeur sur le bloc gauche */
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .accueil {
+        height: 600px; /* ici je réduit la hauteur à partir de 750px */
+    }
+    h1 {
+        font-size: 50px;
+        padding-top: 120px;
+    }
+    .accueil p {
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
+    .btn-accueil {
+        font-size: 18px;
+        padding: 12px;
+        margin-top: 20px;
+    }
+    .bloc-gauche-accueil {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+    .accueil {
+        height: 450px;
+    }
+    h1 {
+        font-size: 40px;
+        padding-top: 100px;
+        margin-left: 2vw;
+    }
+    .accueil p {
+        font-size: 20px;
+        margin-left: 2vw;
+        margin-bottom: 15px;
+    }
+    .btn-accueil {
+        padding: 8px;
+        font-size: 16px;
+    }
+    .b1 {
+        margin-left: 2vw;
+    }
+    .b2 {
+        margin-left: 10px;
+    }
+    .bloc-gauche-accueil {
+        box-shadow: 20px 0 100px 100px #000;
+        width: 40%;
+    }
+
+}
+
+
+/*------------ Section infos ------------*/
+
+.titre-section-info {
+    color: #000;
+    text-align: center;
+    font-size: 65px;
+    padding: 50px 20px 120px;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+}
+.section-info { /* ici on utilise des images et il faut les prendre de forme portrait.
+    Il faut que l'image s'adapte à la forme qu'on veut lui donner. Banque d'images sur Unplash.com */ 
+    display: flex; /* ça met les éléments les uns à la suite des autres */
+    justify-content: center; /* On les centres sur l'axe x */
+    flex-wrap: wrap; /* cette propriété permet: Quand on a plus d'espace de gauche à droite, les éléments passent les uns àla suite des autres */
+    width: 100%;
+    margin: 0 auto;
+    background: #f1f1f1;
+    position: relative;
+}
+.carte-info {
+    width: 350px;
+    height: auto;
+    margin: 0 20px 80px; /* 0 en haut 20px de gauche à droite 80px en bas */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4); /* 10px en bas et 30px d'ombre */
+    position: relative;
+    z-index: 100;  /* pour bien que l'élément soit tjrs au-dessus de la fioritude (les petits points en décoration) */
+}
+.container-photo-info img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover; /* sert à notre image de bien couvrir l'espace (doit s'adapter à son conteneur en utilisant sa largeur et sa hauteur.)*/ 
+}
+.carte-info h2 {
+    color: #333;
+    text-align: center;
+    font-size: 25px;
+    padding: 20px 5px;
+}
+.carte-info p {
+    color: #333;
+    text-align: center;
+    font-size: 23px;
+    padding: 0 5px 15px;
+}
+
+.deco-infos {
+    position: absolute;
+    z-index: -1;
+    top: -70px;
+    left: -100px;
+}
+
+@media screen and (max-width: 1400px) {
+    .deco-infos {
+        display: none; /* Faire disparaître un élément */
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .titre-section-info {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .titre-section-info {
+        font-size: 32px;
+        padding: 40px 20px 40px;
+    }
+    .carte-info {
+        margin: 0 10px 45px; /* modification des marges pour un plus joli rendu */
+    }
+}
+
+
+/*------------ Section Choix ------------*/
+
+#choix {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+}
+.entrainement-choix {
+    width: 30%;
+    text-align: center;
+    color: #f1f1f1;
+    margin: 50px 20px 70px;
+}
+
+.entrainement-choix h3 {
+    font-size: 50px;
+    margin-bottom: 20px;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+}
+.entrainement-choix p {
+    font-size: 18px;
+    width: 70%;
+    margin: 0 auto 30px;
+}
+.btn-outline-choix {
+    width: 300px;
+    padding: 15px 0;
+    font-size: 22px;
+    background: #000;
+    color: #f1f1f1;
+    border: 1px solid #f1f1f1;
+    cursor: pointer;
+}
+.btn-outline-choix:hover { /* Pour l'animation on fait swicher */
+    transition: all 0.2s ease-in-out;
+    background: #fff;
+    color: #000;
+}
+
+@media screen and (max-width: 1200px) {
+    .entrainement-choix {
+        width: 400px; /* On passe d'une valeur en % absolue en pixel car: lorsque l'on va réduire, s'il son en % les éléments vont se rapprocher et quand ça devient trop petit on a pas envie qu'ils se rapprochent */
+    }
+}
+@media screen and (max-width: 775px) {
+#choix {
+    flex-direction: column;
+}
+.entrainement-choix h3 {
+    font-size: 40px;
+    margin-bottom: 20px; /* on baisse le titre */
+}
+.btn-outline-choix {
+    width: 250px;
+}
+.entrainement-choix{
+    width: 350px;
+    margin: 50px 0px 70px;
+}
+.entrainement-choix:nth-child(1){ /* Le premier enfant: c'est le numéro dans sa porté. Ici la section choix il a deux enfants */
+    margin: 50px 20px 0px;
+}
+}
+
+
+/*------------ Section Équipements ------alt+144 pour le é------*/
+
+.titre-equipements {
+    /*border-top: 1px dashed #f1f1f1; /* On lui met une petite border-top pour une séparation et dashed pour faire des petits pointiller */
+    text-align: center;
+    font-size: 70px;
+    color: #000;
+    padding: 50px 0;
+    text-transform: uppercase;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+}
+#equipement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1300px; /* la grille pour les grands écrans */
+    min-width: 300px;
+    margin: 0 auto 100px;
+}
+
+.btn-modale {
+    width: 350px;
+    height: 400px;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    background-size: cover; /* le background qu'on lui met va couvri tout le bouton */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.btn-modale:nth-child(1){
+    background-image: url(ressources/img1-equip.jpg);
+}
+.btn-modale:nth-child(2){
+    background-image: url(ressources/img2-equip.jpg);
+}
+.btn-modale:nth-child(3){
+    background-image: url(ressources/img3-equip.jpg);
+}
+.btn-modale:nth-child(4){
+    background-image: url(ressources/img4-equip.jpg);
+}
+.btn-modale:nth-child(5){
+    background-image: url(ressources/img5-equip.jpg);
+}
+.btn-modale:nth-child(6){
+    background-image: url(ressources/img6-equip.jpg);
+}
+.btn-modale:nth-child(7){
+    background-image: url(ressources/img7-equip.jpg);
+}
+.btn-modale:nth-child(8){
+    background-image: url(ressources/img8-equip.jpg);
+}
+.btn-modale:nth-child(9){
+    background-image: url(ressources/img9-equip.jpg);
+}
+
+.bloc-modale { /* technique pour les élément positionner pour leur faire prendre tout l'espace */ 
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.75); /* overlay ça souligne ce que l'on a au milieu */
+    z-index: 1000;
+    display: none;
+}
+.active-modale {
+    display: block;
+}
+.bloc-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* centrer parfaitement un élément en absolu */ 
+    width: 800px;
+    height: 500px;
+}
+.bloc-modale img {
+    width: 100%;
+}
+.fermeture-modale {
+    position: absolute;
+    z-index: 4000; /* pour qu'il soit au-dessu de l'image */
+    top: 5%;
+    right: 5%;
+    width: 60px;
+    height: 60px;
+    font-size: 22px;
+    color: white;
+    background: red;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+
+/* --------------- Parallax --------------- */
+
+.parallax {
+    background-image: url(ressources/img-paral.jpg); /*predre toute la largeur à mon élément.L'image doit être plus large que haute, il faut qu'on puisse scroller dedant*/
+    background-attachment: fixed;/* fixation de l'image par rapport au scroll */
+    background-position: center;
+    width: 100%;
+    height: 400px;
+    display: flex;/* juste pour centrer le texte*/
+    justify-content: center;
+    align-items: center;
+}
+.parallax-txt {
+    font-size: 100px;
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+}
+@media screen and (max-width: 550px){
+    .parallax-txt {
+        font-size: 50px;
+    }
+}
+
+/*------------ Section Tarifs ------------*/
+
+.titre-tarifs {
+    background: #f1f1f1;
+    font-size: 50px;
+    text-align: center;
+    padding: 50px 0;
+}
+#tarifs { /* section en elle-même */
+    background: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 70%;
+    max-width: 1300px;
+    min-width: 300px; /*--l'écran minimal d'un portable est de 320--*/
+    margin: 0 auto 100px;
+}
+
+.carte-tarif {
+    width: 300px;
+    height: auto;
+    /*--background-image: repeating-linear-gradient: c'est un dégradé linéaire. Site Gradient Magic--*/
+    background-image: repeating-linear-gradient(22.5deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px,transparent 1px, transparent 31px,rgba(255,255,255,0.05) 31px, rgba(255,255,255,0.05) 32px,transparent 32px, transparent 92px),repeating-linear-gradient(112.5deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px,transparent 1px, transparent 31px,rgba(255,255,255,0.05) 31px, rgba(255,255,255,0.05) 32px,transparent 32px, transparent 92px),repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px,transparent 1px, transparent 31px,rgba(255,255,255,0.05) 31px, rgba(255,255,255,0.05) 32px,transparent 32px, transparent 92px),linear-gradient(90deg, hsl(279,0%,3%),hsl(279,0%,3%));
+    color: #f1f1f1;
+    margin: 20px 10px;
+    border-radius: 5px;
+}
+
+.carte-tarif h3 {/*--titre à l'intérieur de la carte--*/
+    text-align: center;
+    font-size: 45px;
+    margin: 25px 0;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    position: relative;
+}
+.prix-carte {
+    text-align: center;
+    font-size: 30px;
+    margin: 25px 0;
+}
+.prix-carte span {
+    font-size: 80px;
+    position: relative;
+}
+.prix-carte span::after { /*--pseudo élément de span. Le pseudo élément est un élément qu'on a envie de rajouter avant ou après un élément pour le styliser ou rajouter un petit quelquechose, pour le compléter. On lui met un contenu  --*/
+    content: "€";
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: -20px;
+    font-size: 25px;
+}
+.infos-carte {
+    width: 170px;
+    margin: 20px auto 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 22px;
+}
+.infos-carte img {
+    margin-right: 7px;
+    width: 20px;
+}
+
+/*------------ Section formulaire ------------*/
+
+.titre-contact {
+    border-top: 1px dashed #000;
+    text-align: center;
+    font-size: 50px;
+    padding: 50px 0;
+}
+
+form {
+    width: 50%;
+    margin: 0 auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+label, input {
+    width: 100%;
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+form input {
+    padding: 10px 5px; /* le padding juste pour rajouter le l'espace dans nos input et que ce soit plus agréable à lire */ 
+}
+
+input:nth-child(4){
+    margin-bottom: 20px; /* l'input avant le textarea */
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    font-size: 20px;
+    padding: 15px;
+}
+label:nth-child(5){
+    margin-bottom: 10px; /* label du textarea: ici le troisième label soit le 5ième enfants: Message */
+}
+
+.form-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 18px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+@media screen and (max-width: 1100px){
+    #contact {
+        width: 80%;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px dashed #000; /* pour les petits pointiller */
+}
+
+/* on réduit juste le titre 
+@media screen and (max-width: 850px){
+    .ptitre-equipements {
+        font-size: 45px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .ptitre-equipements {
+        font-size: 35px;
+    }
+}
+*/
